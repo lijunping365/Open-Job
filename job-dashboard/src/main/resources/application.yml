@@ -1,0 +1,23 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /open-job-api
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: job-dashboard
+  main:
+    allow-bean-definition-overriding: true # SpringBoot 2.1需要设置
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-enums-package: com.openbytecode.job.admin.enums*;com.openbytecode.job.common.enums*
+  global-config:
+    db-config:
+      id-type: auto
+
+logging:
+  level:
+    com.openbytecode: INFO

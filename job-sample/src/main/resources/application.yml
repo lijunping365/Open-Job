@@ -1,0 +1,15 @@
+server:
+  port: 8030
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: job-client
+
+
+logging:
+  level:
+    com.openbytecode: INFO
+
+# debug: true

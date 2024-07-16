@@ -1,0 +1,68 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: Hikari
+      max-lifetime: 55000
+      connection-timeout: 60000
+      connection-test-query: SELECT 1
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/open_job?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+
+
+com:
+  openbytecode:
+    # 验证码功能
+    captcha:
+      image:
+        length: 4 #图形验证码的位数为6，将覆盖默认配置中的4
+        width: 200 #图形验证码的宽度为100，将覆盖默认配置中的67，但由于请求中设置的宽度为200，所以真正的宽度将为200
+        height: 60
+      scan:
+        width: 300 #二维码宽度
+        height: 300 #二维码高度
+        margin: 1 #二维码外边距，0到4
+      math:
+        width: 200 #图形验证码的宽度为100，将覆盖默认配置中的67，但由于请求中设置的宽度为200，所以真正的宽度将为200
+        height: 60
+    # oauth 功能
+    oauth:
+      token:
+        support-refresh-token: true #开启刷新 token 功能
+        access-token-expires-in: 86400 #token 过期时间，86400 秒，一天
+        refresh-token-expire-times: 7 # refreshToken 过期时间，七天
+    # 安全功能
+    security:
+      ignore-paths:
+        - "/captcha/**"
+        - "/login/**"
+    # 报警功能
+    alarm:
+      ding-ding:
+        # 这里的 {xxxxxx} 替换成你的钉钉机器人的 secret
+        secret: xxxxxx
+        # 这里 {xxxxxxxx} 替换成你的钉钉机器人的 access_token
+        webhook: https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxx
+      we-chat:
+        # 这里 {xxxxxxxx} 替换成你的企业微信机器人的 key
+        webhook: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxxxx
+      # 报警模板 任务名称-[开始时间-结束时间]-[用时]:[报错内容]
+      template: "%s-[%s-%s]-[%s]:[%s]"
+      # 夜间开始时间（18：00）
+      night-begin-time: 1800
+      # 夜间结束时间（10：00）
+      night-end-time: 1000
+    # 日志功能
+    log:
+      interval: 7
+
+    # kimi
+    openai:
+      token: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      base-url: https://api.moonshot.cn/

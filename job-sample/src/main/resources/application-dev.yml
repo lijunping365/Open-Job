@@ -1,0 +1,10 @@
+com:
+  openbytecode:
+    rpc:
+      server:
+        server-address: 127.0.0.1
+        server-port: 5200
+        server-name: open-job-services
+
+    logger:
+      path: /data/server/open-job/logs
